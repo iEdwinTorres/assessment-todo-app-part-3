@@ -4,11 +4,19 @@ import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import { BrowserRouter as Router } from "react-router-dom";
+import { createStore } from "redux";
+import todoReducer from "./reducer";
+import { Provider } from "react-redux";
+
+
+const store = createStore(todoReducer);
 
 ReactDOM.render(
-	<Router basename={process.env.PUBLIC_URL}>
-		<App />
-	</Router>,
+	<Provider store={store}>
+		<Router basename={process.env.PUBLIC_URL}>
+			<App />
+		</Router>
+	</Provider>,
 	document.getElementById("root")
 );
 
